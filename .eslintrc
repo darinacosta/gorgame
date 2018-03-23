@@ -1,0 +1,42 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": module,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "env": {
+      "browser": true,
+      "node": true
+  },
+  "extends": [ "airbnb-base", "prettier" ],
+  "globals": {
+    "Phaser": false,
+    "game": true
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-unused-vars": "warn",
+    "camelcase": 0,
+    "guard-for-in": 0,
+    "no-restricted-syntax": 0,
+    "class-methods-use-this": [0, {
+      "exceptMethods": [
+        "render",
+        "roomWillLoad",
+        "roomWillStart",
+        "roomDidStart",
+        "roomWillUpdate",
+        "roomDidUpdate"
+      ]
+    }]
+  }
+}

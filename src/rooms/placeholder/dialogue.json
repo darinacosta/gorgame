@@ -1,0 +1,100 @@
+[
+  {
+    "title": "init",
+    "tags": "i-visited-bedroom, next-hotspots",
+    "body":
+      "<<hideif $visited-bedroom>>You awake from a delirious dream to find yourself in your childhood bedroom.<</hideif>><<if $visited-bedroom>>Your bedroom.<</if>> \n",
+    "position": {
+      "x": -638,
+      "y": -241
+    },
+    "colorID": 6
+  },
+  {
+    "title": "look-window",
+    "tags": "next-menu_options, i-look-window",
+    "body":
+      "The chemical glow of the Shield Oil Refinery softly illuminates the landscape outside the window. ",
+    "position": {
+      "x": -1227,
+      "y": -191
+    },
+    "colorID": 1
+  },
+  {
+    "title": "look-jacket",
+    "tags": "next-menu_options",
+    "body": "Your lucky jacket.",
+    "position": {
+      "x": -995,
+      "y": 38
+    },
+    "colorID": 1
+  },
+  {
+    "title": "take-jacket",
+    "tags": "next-menu_options, onstart-takejacket",
+    "body":
+      "You find your wallet and pocket knife in the pockets of your jacket.",
+    "position": {
+      "x": -307,
+      "y": -219
+    },
+    "colorID": 2
+  },
+  {
+    "title": "look-computer",
+    "tags": "i-look-computer, next-menu_options",
+    "body":
+      "Your <<highlight-g>>UX500<</highlight>> flickers idly on a shoddy particle board desk. You learned to type on this thing. You and <<$brother_name>> would stay up all night lurking chat rooms and message boards on the meshwork, discovering new recipes for explosives, how to hack pay phones, and perhaps most critically, how to chainbreak an artificially sentient android. The night that your mom showed up with Million, you and <<$brother_name>> stayed up past dawn, pouring over pirated <<highlight-g>>Light Bionics<</highlight>> API documentation. Million idled in a slump on the floor as <<$brother_name>> and your mom watched over your shoulder while you wrote the procedure that would ultimately free her. The computer is a relic now, but you'll never give it up. ",
+    "position": {
+      "x": -1227,
+      "y": 34
+    },
+    "colorID": 1
+  },
+  {
+    "title": "look-photographs",
+    "tags": "i-bedroom_look_photographs, next-menu_options",
+    "body":
+      "Washed out photographs from cheap disposable cameras are spread across the room.",
+    "position": {
+      "x": -987,
+      "y": 269
+    },
+    "colorID": 1
+  },
+  {
+    "title": "use-computer",
+    "tags": "next-menu_options",
+    "body":
+      "<<if $disks>>[[Load disk|load_disk]]<</if>>\n<<hideif $disks>>You do not possess any disks to load.<</hideif>>",
+    "position": {
+      "x": -627,
+      "y": 274
+    },
+    "colorID": 3
+  },
+  {
+    "title": "look-monkey",
+    "tags": "next-options",
+    "body":
+      "Your stuffed monkey and longtime best friend slouches on the shelf. Your grandfather gifted you Monkey when you were 3 years old. You conversed with him often. As you grew older, he became a reflection of your neurosis and guilt, frequently chastising you for becoming distant and not showing him enough attention. Remembering this period in your relationship to the doll fills you when a sense of regret.",
+    "position": {
+      "x": -870,
+      "y": 221
+    },
+    "colorID": 0
+  },
+  {
+    "title": "look-shelf",
+    "tags": "next-menu_options",
+    "body":
+      "Artifacts from your childhood adorn the shelves and walls -- tapes, records, posters, old photographs.",
+    "position": {
+      "x": -1455,
+      "y": 35
+    },
+    "colorID": 1
+  }
+]
