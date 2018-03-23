@@ -1,12 +1,12 @@
 ### DEPLOYMENT
 
-- `mkdir norco` in your localhost directory
-- `cd norco`
-- `git clone https://github.com/darinacosta/norcochapterone/`
+- `mkdir gorgame` in your localhost directory
+- `cd gorgame`
+- `git clone https://github.com/darinacosta/gorgame/`
 - `git clone https://github.com/darinacosta/gorngin/`
 - `cd gorngin`
 - `yarn install`
-- `cd ../../norcochapterone`
+- `cd ../../gorgame`
 - `yarn install`
 - `yarn run server`
 - visit http://localhost:9000/
