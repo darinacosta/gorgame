@@ -1,5 +1,4 @@
 import spriteClasses from "gorngin/sprites/spriteClasses";
-import dialogueElementSvc from "gorngin/dialogue/dialogueElementSvc";
 import gornginDialogueConfig from "gorngin/dialogue/config";
 import app, { game } from "services/app";
 

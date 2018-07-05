@@ -1,7 +1,5 @@
 import Room from "gorngin/rooms/Room";
-import npcCtrl from "services/npcCtrl";
 import spriteSvc from "gorngin/sprites/spriteSvc";
-import { game } from "services/app";
 
 export default class Bedroom extends Room {
   displayName = "Home";

@@ -1,7 +1,6 @@
 import stateAssetHandler from "gorngin/stateAssetHandler";
 import stateConfigs from "services/stateConfigs";
 import configHelpers from "gorngin/configHelpers";
-import cameraSvc from "gorngin/camera/cameraSvc";
 import audioSvc from "gorngin/audio/audioSvc";
 import jQuery from "jquery";
 import app, { game } from "services/app";

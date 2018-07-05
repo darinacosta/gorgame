@@ -1,7 +1,4 @@
-import npcCtrl from "services/npcCtrl";
-import particleHelpers from "gorngin/particleHelpers";
 import spriteClasses from "gorngin/sprites/spriteClasses";
-import cameraSvc from "gorngin/camera/cameraSvc";
 import app, { game } from "services/app";
 
 const svc = {};

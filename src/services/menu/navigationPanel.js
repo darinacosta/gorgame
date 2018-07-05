@@ -2,7 +2,7 @@ import spriteClasses from "gorngin/sprites/spriteClasses";
 import dialogueConfig from "gorngin/dialogue/config";
 import config from "services/menu/config";
 import cameraSvc from "gorngin/camera/cameraSvc";
-import keyboardSvc from "gorngin/keyboardSvc";
+import keyboardSvc from "gorngin/input/keyboardSvc";
 import roomSvc from "gorngin/rooms/roomSvc";
 import phaserWrapper from "gorngin/phaserWrapper";
 import roomTransitionSvc from "gorngin/rooms/roomTransitionSvc";

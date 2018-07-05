@@ -1,11 +1,9 @@
 import stateAssetHandler from "gorngin/stateAssetHandler";
 import stateConfigs from "services/stateConfigs";
 import loadScreenSvc from "services/loadScreenSvc";
-import dialogueSvc from "gorngin/dialogue/dialogueSvc";
-import keyboardSvc from "gorngin/keyboardSvc";
-import currentDialogueData from "gorngin/dialogue/currentDialogueData";
+import keyboardSvc from "gorngin/input/keyboardSvc";
 import cameraSvc from "gorngin/camera/cameraSvc";
-import hotspotSvc from "gorngin/hotspots/hotspotSvc";
+import menuSvc from "gorngin/menu/menuSvc";
 import audioSvc from "gorngin/audio/audioSvc";
 import spriteSvc from "gorngin/sprites/spriteSvc";
 import app, { game } from "services/app";
@@ -14,6 +12,8 @@ const state = {};
 let stateId;
 let stateConfig;
 let messageboot;
+let loadimg;
+let loadPerc;
 
 state.init = name => {
   stateId = name;
@@ -41,27 +41,62 @@ state.preload = () => {
     audioSvc.crossfadetrack(stateConfig.audio[0]);
   }
   if (app.enemyGroup) {
-    app.enemyGroup.callAll("kill");
-    app.enemyGroup.callAll("destroy");
+    app.enemyGroup.destroy(true);
   }
-  app.dialogueSvc.lockDialogue = false;
-  dialogueSvc.set("persistentPreviousElement", { portrait: "" });
   app.dialogueManager.callback = null;
-  hotspotSvc.clearHotspots();
   keyboardSvc.clearRegisteredItems();
   keyboardSvc.init();
-  currentDialogueData.clear();
+  menuSvc.resetMenuData();
   stateAssetHandler.preload(stateConfig);
+  if (messageboot) {
+    loadimg = game.add.text(
+      game.width / 2,
+      game.height / 2,
+      "This game is optimized for Google Chrome.\n" +
+        "Some features have been disabled for this browser.",
+      stateConfig.fontStyles.default
+    );
+    loadimg.anchor.setTo(0.5, 0.5);
+  } else if (app.config.load_img) {
+    loadimg = loadScreenSvc.createLoadScreen(stateConfig);
+    loadimg.animations.play("glitchin");
+    loadimg.animations.currentAnim.onComplete.add(() => {
+      loadimg.animations.play("idle");
+    });
+  }
+  if (stateConfig.showLoadPercent) {
+    loadPerc = loadScreenSvc.getLoadPercent();
+  }
 };
 
 state.create = () => {
   function tweenOut() {
-    game.state.start(stateId, true, false);
+    if (loadimg) {
+      if (loadPerc) {
+        game.add
+          .tween(loadPerc)
+          .to({ alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+      }
+      const tween = game.add
+        .tween(loadimg)
+        .to({ alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(() => {
+        game.state.start(stateId, true, false);
+      });
+    } else {
+      game.state.start(stateId, true, false);
+    }
   }
   if (stateConfig.state === "menu") {
     audioSvc.crossfadetrack(stateConfig.audio[0]);
   }
-  tweenOut();
+  if (messageboot) {
+    window.setTimeout(() => {
+      tweenOut();
+    }, 1000);
+  } else {
+    tweenOut();
+  }
   app.currentState = stateId;
   game.stage.backgroundColor = app.config.backgroundColor;
 };

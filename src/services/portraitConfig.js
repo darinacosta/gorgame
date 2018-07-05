@@ -1,4 +1,4 @@
-import gornginPortraitSvc from "gorngin/portraitSvc";
+import gornginPortraitSvc from "gorngin/portraits/portraitSvc";
 import spriteClasses from "gorngin/sprites/spriteClasses";
 import dialogueConfig from "gorngin/dialogue/config";
 

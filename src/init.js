@@ -5,7 +5,6 @@ import "services/cameraConfig";
 import "services/inventoryConfig";
 import "services/portraitConfig";
 import "services/combatsystem/enemyConfig";
-import "services/combatsystem/enemyDialogueConfig";
 
 import roomSvc from "gorngin/rooms/roomSvc";
 import stateManager from "services/stateManager";
