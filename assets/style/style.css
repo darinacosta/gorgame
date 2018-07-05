@@ -24,9 +24,9 @@ canvas {
   image-rendering: crisp-edges;
   image-rendering: -o-crisp-edges;
   -ms-interpolation-mode: nearest-neighbor;
-  object-fit: cover;
+  /*object-fit: cover;
   height: auto !important;
-  width: 100% !important;
+  width: 100% !important;*/
 }
 
 #munro-preload {
@@ -39,5 +39,5 @@ canvas {
 .container {
   display: flex;
   height: 100%;
-  width: 100%;
+  /*width: 100%;*/
 }

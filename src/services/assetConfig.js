@@ -57,11 +57,39 @@ svc.assets = {
     path: "sprites/landscapeframe_mom.png",
     width: 700
   },
+  microwhite: {
+    name: "microwhite",
+    path: "particles/microwhite.png"
+  },
   optionselect: {
     height: 100,
     name: "optionselect",
     path: "sprites/option_select.png",
     width: 50
+  },
+  texas_sky: {
+    height: 160,
+    name: "texas_sky",
+    path: "sprites/texas_sky.png",
+    width: 90
+  },
+  texas_city: {
+    height: 160,
+    name: "texas_city",
+    path: "sprites/texas_city.png",
+    width: 90
+  },
+  texas_fog: {
+    height: 160,
+    name: "texas_fog",
+    path: "sprites/texas_fog.png",
+    width: 90
+  },
+  texas_foreground: {
+    height: 160,
+    name: "texas_foreground",
+    path: "sprites/texas_foreground.png",
+    width: 90
   },
   transparency: {
     height: 360,

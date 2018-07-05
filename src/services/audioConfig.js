@@ -6,10 +6,21 @@ gornginAudioConfig.setConfig({
       name: "livingroomting",
       type: "browser",
       id: "highway"
+    },
+    comebacktome: {
+      name: "comebacktome",
+      type: "browser",
+      id: "comebacktome"
+    },
+    algerianstarburst: {
+      name: "algerianstarburst",
+      type: "browser",
+      id: "algerianstarburst"
     }
   },
   volIndex: {
-    highway: 1
+    comebacktome: 1,
+    algerianstarburst: 1
   }
 });
 

@@ -12,7 +12,7 @@
   },
   {
     "title": "look-window",
-    "tags": "next-menu_options, i-look-window",
+    "tags": "next-hotspots, i-look-window",
     "body":
       "The chemical glow of the Shield Oil Refinery softly illuminates the landscape outside the window. ",
     "position": {
@@ -23,7 +23,7 @@
   },
   {
     "title": "look-jacket",
-    "tags": "next-menu_options",
+    "tags": "next-hotspots",
     "body": "Your lucky jacket.",
     "position": {
       "x": -995,
@@ -33,7 +33,7 @@
   },
   {
     "title": "take-jacket",
-    "tags": "next-menu_options, onstart-takejacket",
+    "tags": "next-hotspots, onstart-takejacket",
     "body":
       "You find your wallet and pocket knife in the pockets of your jacket.",
     "position": {
@@ -44,7 +44,7 @@
   },
   {
     "title": "look-computer",
-    "tags": "i-look-computer, next-menu_options",
+    "tags": "i-look-computer, next-hotspots",
     "body":
       "Your <<highlight-g>>UX500<</highlight>> flickers idly on a shoddy particle board desk. You learned to type on this thing. You and <<$brother_name>> would stay up all night lurking chat rooms and message boards on the meshwork, discovering new recipes for explosives, how to hack pay phones, and perhaps most critically, how to chainbreak an artificially sentient android. The night that your mom showed up with Million, you and <<$brother_name>> stayed up past dawn, pouring over pirated <<highlight-g>>Light Bionics<</highlight>> API documentation. Million idled in a slump on the floor as <<$brother_name>> and your mom watched over your shoulder while you wrote the procedure that would ultimately free her. The computer is a relic now, but you'll never give it up. ",
     "position": {

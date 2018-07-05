@@ -55,8 +55,8 @@ app.config = {
   defaultfont: "MSX Screen 0", // munroregular, MSX Screen 0, MSX Screen 1
   music: 0.3,
   soundfx: 0.1,
-  canvas_width: 700,
-  canvas_height: 387,
+  canvas_width: 90,
+  canvas_height: 160,
   load_img: false,
   // sounds that are shared across all states
   common_sounds: ["lightclick", "confirm"],
@@ -65,9 +65,9 @@ app.config = {
   common_sprites: ["backbutton", "dialoguecontinue", "fullscreen"],
 
   demo: true,
-  dev_canvas_width: 700, // 700
-  dev_canvas_height: 390, // 350
-  backgroundColor: "#000000",
+  dev_canvas_width: 90, // 700
+  dev_canvas_height: 160, // 350
+  backgroundColor: "blue",
   dialogue: {
     openFrom: "BOTTOM",
     height: 133
@@ -77,7 +77,7 @@ app.config = {
   startState: "example",
   startFullscreen: false,
   screencap_enabled: true,
-  debug: false || configHelpers.getURLParameter("debug") !== "false",
+  debug: true,
   liveDebug: false,
   unsupportedBrowser: false,
   /*
