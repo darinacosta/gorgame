@@ -40,7 +40,7 @@ export default class Gasstation extends Room {
         tween: { alpha: 1 },
         time: 3000
       })
-      .yoyo(true, 1000);
+      .yoyo(true, 3000);
     // this.generateTraffic();
   }
   render() {

@@ -20,8 +20,8 @@ svc.get = () => {
     animation: [
       {
         name: "default",
-        sequence: [0, 1, 2, 3],
-        speed: 4,
+        sequence: [0, 1, 2, 3, 4, 5, 6, 7],
+        speed: 10,
         play: true,
         loop: true
       }
