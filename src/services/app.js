@@ -67,7 +67,7 @@ app.config = {
   demo: true,
   dev_canvas_width: 90, // 700
   dev_canvas_height: 160, // 350
-  backgroundColor: "blue",
+  backgroundColor: "#00000",
   dialogue: {
     openFrom: "BOTTOM",
     height: 133

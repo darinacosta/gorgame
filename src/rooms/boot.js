@@ -25,7 +25,7 @@ boot.init = function init() {
   game.renderer.renderSession.roundPixels = true;
   Phaser.Canvas.setImageRenderingCrisp(game.canvas);
   // game.scale.setMinMax(canvasWidth, canvasHeight, canvasWidth, canvasHeight); // (minX, minY, maxX, maxY);
-  game.scale.forceLandscape = false;
+  game.scale.forceLandscape = true;
   game.scale.pageAlignVertically = false;
   game.scale.onFullScreenChange.add(() => {
     if (
@@ -73,7 +73,7 @@ boot.create = () => {
   if (app.config.devStart || app.config.camera_mode) {
     game.state.start("loadState", true, false, state);
   } else {
-    game.state.start("loadState", true, false, "placeholder");
+    game.state.start("loadState", true, false, "highway");
   }
 };
 

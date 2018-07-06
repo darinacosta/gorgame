@@ -39,6 +39,24 @@ svc.assets = {
     path: "sprites/gridtransition.png",
     width: 700
   },
+  highway: {
+    height: 160,
+    name: "highway",
+    path: "sprites/highway.png",
+    width: 90
+  },
+  highway_wizard: {
+    height: 160,
+    name: "highway_wizard",
+    path: "sprites/highway_wizard.png",
+    width: 90
+  },
+  highway_title: {
+    height: 160,
+    name: "highway_title",
+    path: "sprites/highway_title.png",
+    width: 90
+  },
   hotspot: {
     height: 40,
     name: "hotspot",
@@ -90,6 +108,12 @@ svc.assets = {
     name: "texas_foreground",
     path: "sprites/texas_foreground.png",
     width: 90
+  },
+  trafficmodel: {
+    height: 66,
+    name: "trafficmodel",
+    path: "sprites/trafficmodel.png",
+    width: 147
   },
   transparency: {
     height: 360,
