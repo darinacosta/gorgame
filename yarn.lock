@@ -2619,9 +2619,9 @@ eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
 
-eventemitter3@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.0.1.tgz#4ce66c3fc5b5a6b9f2245e359e1938f1ab10f960"
+eventemitter3@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.0.tgz#090b4d6cdbd645ed10bf750d4b5407942d7ba163"
 
 events@^1.0.0:
   version "1.1.1"
@@ -3168,7 +3168,9 @@ globule@^1.0.0:
     "5to6-codemod" "^1.7.1"
     bootstrap "^3.3.5"
     jsdoc "^3.5.5"
+    papaparse "^4.6.0"
     phaser "^2.4.3"
+    rainbowvis.js "^1.0.1"
     requirejs "^2.1.20"
 
 got@^5.0.0:
@@ -4989,6 +4991,10 @@ pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
 
+papaparse@^4.6.0:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-4.6.1.tgz#7b3c5bdf4f0fd12374e2d37f987e9d74a1834ca8"
+
 parse-asn1@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/parse-asn1/-/parse-asn1-5.1.0.tgz#37c4f9b7ed3ab65c74817b5f2480937fbf97c712"
@@ -5132,11 +5138,11 @@ phaser@^2.4.3:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/phaser/-/phaser-2.6.2.tgz#eb39121725a2149c49f46b5d144318c22bc09249"
 
-phaser@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.2.1.tgz#63aeb5435cbb0bc60d81eb1fea0d566e365d98b1"
+phaser@^3.15.1:
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.15.1.tgz#17d41fb5b310fb062952e29d9bb26a99c90d3a44"
   dependencies:
-    eventemitter3 "^3.0.0"
+    eventemitter3 "^3.1.0"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
@@ -5365,6 +5371,10 @@ querystringify@0.0.x:
 querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
+
+rainbowvis.js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rainbowvis.js/-/rainbowvis.js-1.0.1.tgz#e8998fb97161b02557748c7da097962b0d6e3e00"
 
 randomatic@^1.1.3:
   version "1.1.7"

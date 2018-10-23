@@ -1,6 +1,3 @@
-import spriteSvc from "gorngin/sprites/spriteSvc";
-import { game } from "services/app";
-
 const svc = {};
 svc.get = () => {
   const onscreen = {};

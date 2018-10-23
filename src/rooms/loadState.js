@@ -1,12 +1,10 @@
 import stateAssetHandler from "gorngin/stateAssetHandler";
 import stateConfigs from "services/stateConfigs";
-import loadScreenSvc from "services/loadScreenSvc";
 import keyboardSvc from "gorngin/input/keyboardSvc";
 import cameraSvc from "gorngin/camera/cameraSvc";
-import menuSvc from "gorngin/menu/menuSvc";
 import audioSvc from "gorngin/audio/audioSvc";
-import spriteSvc from "gorngin/sprites/spriteSvc";
-import app, { game } from "services/app";
+import gorgame from "gorngin/gorgame/gorgame";
+import app from "services/app";
 
 const state = {};
 let stateId;
@@ -31,9 +29,7 @@ state.init = name => {
 state.preload = () => {
   // reset all necessary vars and clear cache
   audioSvc.clearCache();
-  spriteSvc.clearCache();
-
-  game.antialias = false;
+  gorgame.setAntialias(false);
   messageboot =
     !app.config.browser.toLowerCase().startsWith("chrome") &&
     stateConfig.state === "menu";
@@ -46,26 +42,21 @@ state.preload = () => {
   app.dialogueManager.callback = null;
   keyboardSvc.clearRegisteredItems();
   keyboardSvc.init();
-  menuSvc.resetMenuData();
   stateAssetHandler.preload(stateConfig);
   if (messageboot) {
-    loadimg = game.add.text(
-      game.width / 2,
-      game.height / 2,
+    loadimg = gorgame.add.text(
+      gorgame.getWidth() / 2,
+      gorgame.getHeight() / 2,
       "This game is optimized for Google Chrome.\n" +
         "Some features have been disabled for this browser.",
       stateConfig.fontStyles.default
     );
     loadimg.anchor.setTo(0.5, 0.5);
   } else if (app.config.load_img) {
-    loadimg = loadScreenSvc.createLoadScreen(stateConfig);
-    loadimg.animations.play("glitchin");
+    loadimg.play("glitchin");
     loadimg.animations.currentAnim.onComplete.add(() => {
-      loadimg.animations.play("idle");
+      loadimg.play("idle");
     });
-  }
-  if (stateConfig.showLoadPercent) {
-    loadPerc = loadScreenSvc.getLoadPercent();
   }
 };
 
@@ -73,18 +64,22 @@ state.create = () => {
   function tweenOut() {
     if (loadimg) {
       if (loadPerc) {
-        game.add
-          .tween(loadPerc)
-          .to({ alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+        gorgame.add.tween({
+          sprite: loadPerc,
+          tween: { alpha: 0 },
+          time: 900
+        });
       }
-      const tween = game.add
-        .tween(loadimg)
-        .to({ alpha: 0 }, 900, Phaser.Easing.Linear.None, true);
+      const tween = gorgame.add.tween({
+        sprite: loadimg,
+        tween: { alpha: 0 },
+        time: 900
+      });
       tween.onComplete.add(() => {
-        game.state.start(stateId, true, false);
+        gorgame.scene.start(stateId, true, false);
       });
     } else {
-      game.state.start(stateId, true, false);
+      gorgame.scene.start(stateId, true, false);
     }
   }
   if (stateConfig.state === "menu") {
@@ -98,7 +93,6 @@ state.create = () => {
     tweenOut();
   }
   app.currentState = stateId;
-  game.stage.backgroundColor = app.config.backgroundColor;
 };
 
 export default state;

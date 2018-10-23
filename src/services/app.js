@@ -1,4 +1,5 @@
-import app, { game } from "gorngin/app";
+import game from "gorngin/gorgame/phasergame";
+import app from "gorngin/app";
 import configHelpers from "gorngin/configHelpers";
 import stateManager from "services/stateManager";
 
@@ -52,9 +53,12 @@ app.get = attr => app[attr];
 app.config = {
   browser: configHelpers.browser,
   title: "Game",
-  defaultfont: "MSX Screen 0", // munroregular, MSX Screen 0, MSX Screen 1
+  defaultfont: "munroregular", // munroregular, MSX Screen 0, MSX Screen 1, mrjunker
+  devtools: true,
+  defaultFontSize: 13,
   music: 0.3,
-  soundfx: 0.1,
+  soundfx: 0.3,
+  mute: false,
   canvas_width: 700,
   canvas_height: 387,
   load_img: false,
@@ -77,7 +81,7 @@ app.config = {
   startState: "example",
   startFullscreen: false,
   screencap_enabled: true,
-  debug: false || configHelpers.getURLParameter("debug") !== "false",
+  debug: false,
   liveDebug: false,
   unsupportedBrowser: false,
   /*

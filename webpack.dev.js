@@ -1,10 +1,13 @@
 const path = require("path");
 
 module.exports = {
-  entry: ["babel-polyfill", "./src/init.js"],
+  entry: {
+    app: ["babel-polyfill", "./src/init.js"],
+    vendor: ["phaser-ce"]
+  },
   output: {
     path: __dirname,
-    filename: "bundle.js"
+    filename: "[name].bundle.js"
   },
   module: {
     rules: [
@@ -31,11 +34,13 @@ module.exports = {
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
     alias: {
+      gordeps: path.resolve(__dirname, "../gorngin/node_modules"),
       gorngin: path.resolve(__dirname, "../gorngin/src/gorngin"),
       jquery: path.resolve(__dirname, "node_modules/jquery/dist/jquery.min"),
       rooms: path.resolve(__dirname, "src/rooms"),
       assets: path.resolve(__dirname, "assets")
     }
   },
+  // plugins: [new JsDocPlugin()],
   devtool: "cheap-eval-source-map"
 };

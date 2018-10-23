@@ -1,5 +1,5 @@
-import spriteClasses from "gorngin/sprites/spriteClasses";
 import gornginCameraConfig from "gorngin/camera/config";
+import gorgame from "gorngin/gorgame/gorgame";
 
 const defaultBorderAnimations = [
   /*
@@ -212,7 +212,7 @@ const momBorderAnimations = [
 ];
 
 const defaultBorder = () => {
-  const frame = new spriteClasses.Sprite({
+  const frame = gorgame.add.sprite({
     x: 0,
     y: 0,
     img: "landscapeframe",
@@ -249,7 +249,7 @@ gornginCameraConfig.setConfig({
   borders: {
     getDefault: defaultBorder,
     getLandscape() {
-      const frame = new spriteClasses.Sprite({
+      const frame = gorgame.add.sprite({
         x: 0,
         y: 0,
         img: "landscapeframe",
@@ -263,7 +263,7 @@ gornginCameraConfig.setConfig({
       return frame;
     },
     getMomBorder() {
-      const frame = new spriteClasses.Sprite({
+      const frame = gorgame.add.sprite({
         x: 0,
         y: 0,
         img: "landscapeframe",
@@ -277,7 +277,7 @@ gornginCameraConfig.setConfig({
       return frame;
     },
     getMenu() {
-      return new spriteClasses.Sprite({
+      return gorgame.add.sprite({
         x: 0,
         y: 0,
         img: "landscapeframeportrait",
@@ -319,7 +319,7 @@ gornginCameraConfig.setConfig({
       });
     },
     getFullscreen() {
-      return new spriteClasses.Sprite({
+      return gorgame.add.sprite({
         x: 0,
         y: 0,
         img: "fullscreenframe",

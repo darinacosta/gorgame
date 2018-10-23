@@ -1,4 +1,4 @@
-import spriteClasses from "gorngin/sprites/spriteClasses";
+import gorgame from "gorngin/gorgame/gorgame";
 import gornginDialogueConfig from "gorngin/dialogue/config";
 import app, { game } from "services/app";
 
@@ -316,7 +316,7 @@ gornginDialogueConfig.setConfig({
       dialogueElementSvc.destroyDialogueGroup();
       app.dialogueSvc.advanceDialogueState("options");
     };
-    const backbutton = new spriteClasses.Sprite({
+    const backbutton = gorgame.add.sprite({
       x,
       y,
       img: "backbutton",
