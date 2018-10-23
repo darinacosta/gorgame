@@ -1,5 +1,8 @@
 const path = require("path");
 
+const phaserModule = path.join(__dirname, "/node_modules/phaser/");
+const phaser = path.join(phaserModule, "src/phaser.js");
+
 module.exports = {
   entry: {
     app: ["babel-polyfill", "./src/init.js"],
@@ -38,7 +41,8 @@ module.exports = {
       gorngin: path.resolve(__dirname, "../gorngin/src/gorngin"),
       jquery: path.resolve(__dirname, "node_modules/jquery/dist/jquery.min"),
       rooms: path.resolve(__dirname, "src/rooms"),
-      assets: path.resolve(__dirname, "assets")
+      assets: path.resolve(__dirname, "assets"),
+      phaser
     }
   },
   // plugins: [new JsDocPlugin()],

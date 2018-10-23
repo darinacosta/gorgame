@@ -13,7 +13,9 @@ let messageboot;
 let loadimg;
 let loadPerc;
 
-state.init = name => {
+state.init = function init(name) {
+  console.log("!!!THIS", this);
+  window.scene = this;
   stateId = name;
   stateConfig = app.stateManager.getStateConfig(name)
     ? app.stateManager.getStateConfig(name)
@@ -34,14 +36,14 @@ state.preload = () => {
     !app.config.browser.toLowerCase().startsWith("chrome") &&
     stateConfig.state === "menu";
   if (stateConfig.state !== "menu") {
-    audioSvc.crossfadetrack(stateConfig.audio[0]);
+    // @TODO audioSvc.crossfadetrack(stateConfig.audio[0]);
   }
   if (app.enemyGroup) {
     app.enemyGroup.destroy(true);
   }
   app.dialogueManager.callback = null;
-  keyboardSvc.clearRegisteredItems();
-  keyboardSvc.init();
+  //  @TODO keyboardSvc.clearRegisteredItems();
+  // @TODO keyboardSvc.init();
   stateAssetHandler.preload(stateConfig);
   if (messageboot) {
     loadimg = gorgame.add.text(
@@ -61,38 +63,12 @@ state.preload = () => {
 };
 
 state.create = () => {
-  function tweenOut() {
-    if (loadimg) {
-      if (loadPerc) {
-        gorgame.add.tween({
-          sprite: loadPerc,
-          tween: { alpha: 0 },
-          time: 900
-        });
-      }
-      const tween = gorgame.add.tween({
-        sprite: loadimg,
-        tween: { alpha: 0 },
-        time: 900
-      });
-      tween.onComplete.add(() => {
-        gorgame.scene.start(stateId, true, false);
-      });
-    } else {
-      gorgame.scene.start(stateId, true, false);
-    }
-  }
   if (stateConfig.state === "menu") {
-    audioSvc.crossfadetrack(stateConfig.audio[0]);
-  }
-  if (messageboot) {
-    window.setTimeout(() => {
-      tweenOut();
-    }, 1000);
-  } else {
-    tweenOut();
+    // @TODO audioSvc.crossfadetrack(stateConfig.audio[0]);
   }
   app.currentState = stateId;
+  console.log("!!>>>>START", stateId);
+  gorgame.scene.start(stateId);
 };
 
 export default state;
