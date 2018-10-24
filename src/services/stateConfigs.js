@@ -3,7 +3,7 @@ import app from "services/app";
 
 const stateConfigs = {};
 
-const commonSprites = ["transparency"];
+const commonSprites = ["hotspot", "transparency"];
 
 const combatSprites = ["battlegrid"];
 

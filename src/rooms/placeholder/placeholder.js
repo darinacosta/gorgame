@@ -6,11 +6,18 @@ export default class Bedroom extends Room {
   border = true;
   spritesheets = [];
   directions = [];
-  hotspots = [];
+  hotspots = [
+    {
+      x: 478,
+      y: 23,
+      width: 150,
+      height: 150,
+      info: "Window",
+      key: "look-window"
+    }
+  ];
   transition = "horizontal";
   dialogueOrientation = "horizontal";
   dialogueInitElement = "init";
-  roomDidStart() {
-    console.log("TEST");
-  }
+  roomDidStart() {}
 }
