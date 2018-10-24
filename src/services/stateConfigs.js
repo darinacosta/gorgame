@@ -3,45 +3,7 @@ import app from "services/app";
 
 const stateConfigs = {};
 
-const commonSprites = [
-  "items",
-  "fullscreen",
-  "blackscreen",
-  "backbutton",
-  "bird",
-  "gridtransition",
-  "dialoguecontinue",
-  "portraitstatic",
-  "landscapeframe",
-  "hpmenu",
-  "journal",
-  "journaldrawings",
-  "titlestars",
-  "menulandscape",
-  "menuicons",
-  "optionselect",
-  "navframe_horizontal",
-  "navframe",
-  "hotspot",
-  "transparency",
-  "landscapeframeportrait",
-  "placeholderportraitmom",
-  "party_portraits",
-  "characterportraitframe",
-  "million",
-  "lucky",
-  "locationarrows",
-  "menuselectioncover",
-  "worldmap",
-  "worldmaplocations",
-  "maptoggle",
-  "mapsidebar",
-  "dreamspacegrid1",
-
-  // mom assets @TODO: split these out
-  "neworleansmap",
-  "placeholderportraitmom"
-];
+const commonSprites = ["transparency"];
 
 const combatSprites = ["battlegrid"];
 

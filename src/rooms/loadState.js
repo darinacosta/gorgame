@@ -11,10 +11,8 @@ let stateId;
 let stateConfig;
 let messageboot;
 let loadimg;
-let loadPerc;
 
 state.init = function init(name) {
-  console.log("!!!THIS", this);
   window.scene = this;
   stateId = name;
   stateConfig = app.stateManager.getStateConfig(name)
@@ -31,35 +29,14 @@ state.init = function init(name) {
 state.preload = () => {
   // reset all necessary vars and clear cache
   audioSvc.clearCache();
-  gorgame.setAntialias(false);
   messageboot =
     !app.config.browser.toLowerCase().startsWith("chrome") &&
     stateConfig.state === "menu";
-  if (stateConfig.state !== "menu") {
-    // @TODO audioSvc.crossfadetrack(stateConfig.audio[0]);
-  }
-  if (app.enemyGroup) {
-    app.enemyGroup.destroy(true);
-  }
   app.dialogueManager.callback = null;
   //  @TODO keyboardSvc.clearRegisteredItems();
   // @TODO keyboardSvc.init();
+  console.log("!!!STATE CONFIG", stateConfig);
   stateAssetHandler.preload(stateConfig);
-  if (messageboot) {
-    loadimg = gorgame.add.text(
-      gorgame.getWidth() / 2,
-      gorgame.getHeight() / 2,
-      "This game is optimized for Google Chrome.\n" +
-        "Some features have been disabled for this browser.",
-      stateConfig.fontStyles.default
-    );
-    loadimg.anchor.setTo(0.5, 0.5);
-  } else if (app.config.load_img) {
-    loadimg.play("glitchin");
-    loadimg.animations.currentAnim.onComplete.add(() => {
-      loadimg.play("idle");
-    });
-  }
 };
 
 state.create = () => {
@@ -67,7 +44,6 @@ state.create = () => {
     // @TODO audioSvc.crossfadetrack(stateConfig.audio[0]);
   }
   app.currentState = stateId;
-  console.log("!!>>>>START", stateId);
   gorgame.scene.start(stateId);
 };
 
