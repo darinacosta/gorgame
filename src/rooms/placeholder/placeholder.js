@@ -19,5 +19,9 @@ export default class Bedroom extends Room {
   transition = "horizontal";
   dialogueOrientation = "horizontal";
   dialogueInitElement = "init";
-  roomDidStart() {}
+  roomDidStart() {
+    const testGroup = window.scene.add.group("test");
+    const testGroup2 = window.scene.add.group("test2");
+    testGroup2.add(testGroup);
+  }
 }
