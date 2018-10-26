@@ -81,7 +81,7 @@ app.config = {
   startState: "example",
   startFullscreen: false,
   screencap_enabled: true,
-  debug: false,
+  debug: true,
   liveDebug: false,
   unsupportedBrowser: false,
   /*

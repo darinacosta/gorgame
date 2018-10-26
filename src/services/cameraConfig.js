@@ -1,5 +1,5 @@
-import gornginCameraConfig from "gorngin/camera/config";
 import gorgame from "gorngin/gorgame/gorgame";
+import gornginCameraConfig from "gorngin/camera/config";
 
 const defaultBorderAnimations = [
   /*
@@ -145,72 +145,6 @@ const defaultBorderAnimations = [
   }
 ];
 
-const momBorderAnimations = [
-  {
-    name: "horizontal_no_portrait",
-    sequence: [16],
-    speed: 5,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_open",
-    sequence: [33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 16],
-    speed: 15,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_close",
-    sequence: [16, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
-    speed: 15,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_with_portrait",
-    sequence: [22],
-    speed: 5,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_close_portrait",
-    sequence: [22, 21, 20, 19, 18, 17, 16],
-    speed: 25,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_open_portrait",
-    sequence: [16, 17, 18, 19, 20, 21, 22],
-    speed: 25,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_highlight_text",
-    sequence: [1, 2, 3, 4, 5, 0],
-    speed: 7,
-    play: false,
-    loop: false
-  },
-  {
-    name: "horizontal_highlight_portrait",
-    sequence: [6, 7, 8, 9, 10, 0, 10, 9, 8, 7, 6],
-    speed: 7,
-    play: false,
-    loop: true
-  },
-  {
-    name: "horizontal_highlight_main",
-    sequence: [11, 12, 13, 14, 15, 0, 15, 14, 13, 12],
-    speed: 7,
-    play: false,
-    loop: true
-  }
-];
-
 const defaultBorder = () => {
   const frame = gorgame.add.sprite({
     x: 0,
@@ -225,7 +159,7 @@ gornginCameraConfig.setConfig({
   defaultForegroundElements: [
     "blackscreen",
     "combatBackgroundGroup",
-    "enemyGroup",
+    // "enemyGroup",
     "notificationGroup",
     "hotspotGroup",
     "dialoguePortraitGroup",
@@ -240,6 +174,7 @@ gornginCameraConfig.setConfig({
     "dialogueTextGroup",
     "followupIcon",
     "combatGroup",
+    "actionGroup",
     "fadeSprite",
     "transitionSprite",
     "coverGroup",
@@ -253,12 +188,7 @@ gornginCameraConfig.setConfig({
         x: 0,
         y: 0,
         img: "landscapeframe",
-        animation: defaultBorderAnimations,
-        allowGravity: false,
-        fixedToCamera: false,
-        physics: "ARCADE",
-        collideWorldBounds: true,
-        inputEnabled: false
+        animation: defaultBorderAnimations
       });
       return frame;
     },
@@ -267,20 +197,16 @@ gornginCameraConfig.setConfig({
         x: 0,
         y: 0,
         img: "landscapeframe",
-        animation: defaultBorderAnimations,
-        allowGravity: false,
-        fixedToCamera: false,
-        physics: "ARCADE",
-        collideWorldBounds: true,
-        inputEnabled: false
+        animation: defaultBorderAnimations
       });
       return frame;
     },
     getMenu() {
+      console.log("!!!!GET MENU");
       return gorgame.add.sprite({
         x: 0,
         y: 0,
-        img: "landscapeframeportrait",
+        img: "landscapeframe",
         allowGravity: false,
         fixedToCamera: false,
         physics: "ARCADE",

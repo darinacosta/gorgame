@@ -15,6 +15,30 @@ svc.assets = {
     path: "sprites/bird.png",
     width: 17
   },
+  nightcliniclobby: {
+    height: 240,
+    name: "nightcliniclobby",
+    path: "sprites/nightcliniclobby.png",
+    width: 700
+  },
+  menuicons: {
+    height: 20,
+    name: "menuicons",
+    path: "sprites/menuicons.png",
+    width: 20
+  },
+  navframe_horizontal: {
+    height: 100,
+    name: "navframe_horizontal",
+    path: "sprites/navframe_horizontal.png",
+    width: 152
+  },
+  landscapeframe: {
+    height: 360,
+    name: "landscapeframe",
+    path: "sprites/landscapeframe.png",
+    width: 640
+  },
   blackscreen: {
     height: 400,
     name: "blackscreen",

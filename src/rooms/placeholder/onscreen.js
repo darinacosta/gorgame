@@ -1,39 +1,15 @@
+import gorgame from "gorngin/gorgame/gorgame";
+
 const svc = {};
 svc.get = () => {
   const onscreen = {};
 
-  /*
-  spriteSvc.add({
+  onscreen.cliniclobby = gorgame.add.sprite({
     x: 0,
-    y,
-    img: "bedroom",
-    animation: [
-      {
-        name: "jacket",
-        sequence: [0],
-        speed: 4,
-        play: true,
-        loop: false
-      },
-      {
-        name: "nojacket",
-        sequence: [1],
-        speed: 4,
-        play: false,
-        loop: false
-      }
-    ],
-    allowGravity: false,
-    fixedToCamera: false,
-    physics: "ARCADE",
-    collideWorldBounds: true,
-    inputEnabled: false,
-    scale: [1, 1],
-    parallax: false,
-    update() {},
-    statevars: {}
+    y: 0,
+    img: "nightcliniclobby",
+    animation: []
   });
-  */
 
   return onscreen;
 };

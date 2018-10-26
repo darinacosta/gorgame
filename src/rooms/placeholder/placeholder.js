@@ -3,8 +3,9 @@ import Room from "gorngin/rooms/Room";
 export default class Bedroom extends Room {
   displayName = "Home";
   theme = "highway";
+  width = 400;
   border = true;
-  spritesheets = [];
+  spritesheets = ["nightcliniclobby"];
   directions = [];
   hotspots = [
     {
@@ -19,9 +20,5 @@ export default class Bedroom extends Room {
   transition = "horizontal";
   dialogueOrientation = "horizontal";
   dialogueInitElement = "init";
-  roomDidStart() {
-    const testGroup = window.scene.add.group("test");
-    const testGroup2 = window.scene.add.group("test2");
-    testGroup2.add(testGroup);
-  }
+  roomDidStart() {}
 }
