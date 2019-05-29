@@ -53,8 +53,8 @@ app.get = attr => app[attr];
 app.config = {
   browser: configHelpers.browser,
   title: "Game",
-  defaultfont: "munroregular", // munroregular, MSX Screen 0, MSX Screen 1, mrjunker
-  devtools: true,
+  defaultfont: "msxbit", // munroregular, MSX Screen 0, MSX Screen 1, mrjunker
+  devtools: false,
   defaultFontSize: 13,
   music: 0.3,
   soundfx: 0.3,
@@ -67,7 +67,6 @@ app.config = {
 
   // sprites that are shared across all states
   common_sprites: ["backbutton", "dialoguecontinue", "fullscreen"],
-
   demo: true,
   dev_canvas_width: 700, // 700
   dev_canvas_height: 390, // 350
@@ -78,18 +77,14 @@ app.config = {
   },
   enableFullscreen: false,
   skipCutScenes: false,
-  startState: "example",
+  startState: "placeholder",
   startFullscreen: false,
   screencap_enabled: true,
   debug: false,
   liveDebug: false,
   unsupportedBrowser: false,
-  /*
-  configHelpers.browser
-    ? configHelpers.browser.startsWith("Firefox")
-    : null
-    */ devStart: false,
-  devStartState: "example",
+  devStart: false,
+  devStartState: "placeholder",
   devStartMusic: ""
 };
 

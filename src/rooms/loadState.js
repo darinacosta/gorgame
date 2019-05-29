@@ -1,24 +1,19 @@
 import stateAssetHandler from "gorngin/stateAssetHandler";
-import stateConfigs from "services/stateConfigs";
 import keyboardSvc from "gorngin/input/keyboardSvc";
 import cameraSvc from "gorngin/camera/cameraSvc";
 import audioSvc from "gorngin/audio/audioSvc";
 import gorgame from "gorngin/gorgame/gorgame";
+import currentScene from "gorngin/gorgame/currentPhaserScene";
 import app from "services/app";
 
 const state = {};
 let stateId;
 let stateConfig;
-let messageboot;
-let loadimg;
-let loadPerc;
 
-state.init = name => {
+state.init = function init(name) {
+  currentScene.set(this);
   stateId = name;
-  stateConfig = app.stateManager.getStateConfig(name)
-    ? app.stateManager.getStateConfig(name)
-    : stateConfigs.get(stateId);
-  app.currentTimeline = stateConfig.timeline === "mom" ? "mom" : "you";
+  stateConfig = app.stateManager.getStateConfig(name);
   app.stateManager.currentState = stateId;
   app.stateManager.currentStateName = stateConfig.name;
   if (!cameraSvc.defaultForegroundElementsRegisterd) {
@@ -29,70 +24,20 @@ state.init = name => {
 state.preload = () => {
   // reset all necessary vars and clear cache
   audioSvc.clearCache();
-  gorgame.setAntialias(false);
-  messageboot =
-    !app.config.browser.toLowerCase().startsWith("chrome") &&
-    stateConfig.state === "menu";
-  if (stateConfig.state !== "menu") {
-    audioSvc.crossfadetrack(stateConfig.audio[0]);
-  }
-  if (app.enemyGroup) {
-    app.enemyGroup.destroy(true);
-  }
+  audioSvc.crossfadetrack(stateConfig.audio[0]);
   app.dialogueManager.callback = null;
-  keyboardSvc.clearRegisteredItems();
-  keyboardSvc.init();
+  //  @TODO keyboardSvc.clearRegisteredItems();
+  // @TODO keyboardSvc.init();
   stateAssetHandler.preload(stateConfig);
-  if (messageboot) {
-    loadimg = gorgame.add.text(
-      gorgame.getWidth() / 2,
-      gorgame.getHeight() / 2,
-      "This game is optimized for Google Chrome.\n" +
-        "Some features have been disabled for this browser.",
-      stateConfig.fontStyles.default
-    );
-    loadimg.anchor.setTo(0.5, 0.5);
-  } else if (app.config.load_img) {
-    loadimg.play("glitchin");
-    loadimg.animations.currentAnim.onComplete.add(() => {
-      loadimg.play("idle");
-    });
-  }
 };
 
 state.create = () => {
-  function tweenOut() {
-    if (loadimg) {
-      if (loadPerc) {
-        gorgame.add.tween({
-          sprite: loadPerc,
-          tween: { alpha: 0 },
-          time: 900
-        });
-      }
-      const tween = gorgame.add.tween({
-        sprite: loadimg,
-        tween: { alpha: 0 },
-        time: 900
-      });
-      tween.onComplete.add(() => {
-        gorgame.scene.start(stateId, true, false);
-      });
-    } else {
-      gorgame.scene.start(stateId, true, false);
-    }
-  }
+  keyboardSvc.enable();
   if (stateConfig.state === "menu") {
-    audioSvc.crossfadetrack(stateConfig.audio[0]);
-  }
-  if (messageboot) {
-    window.setTimeout(() => {
-      tweenOut();
-    }, 1000);
-  } else {
-    tweenOut();
+    // @TODO audioSvc.crossfadetrack(stateConfig.audio[0]);
   }
   app.currentState = stateId;
+  gorgame.scene.start(stateId);
 };
 
 export default state;

@@ -1,105 +1,80 @@
-import stateAssetHandler from "gorngin/stateAssetHandler";
-import stateConfigs from "services/stateConfigs";
 import configHelpers from "gorngin/configHelpers";
 import audioSvc from "gorngin/audio/audioSvc";
+import inventorySvc from "gorngin/inventory/inventorySvc";
 import jQuery from "jquery";
 import app, { game } from "services/app";
 
 const boot = {};
 
 boot.init = function init() {
-  let canvasWidth;
-  let canvasHeight;
   audioSvc.preloadTracks();
   if (typeof process !== "undefined" && process.versions["node-webkit"]) {
     app.webkit = true;
   }
-  game.stage.backgroundColor = app.config.backgroundColor;
+  game.scene.backgroundColor = app.config.backgroundColor;
   // game.input.maxPointers = 2;
-  if (this.game.device.desktop) {
-    document.getElementById("container").appendChild(game.canvas);
-    canvasWidth = 1024;
-    canvasHeight = 576;
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.fullScreenTarget = document.getElementById("game");
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.renderer.renderSession.roundPixels = true;
-    Phaser.Canvas.setImageRenderingCrisp(game.canvas);
-    game.scale.setMinMax(
-      canvasWidth,
-      canvasHeight,
-      canvasWidth * 3,
-      canvasHeight * 3
-    ); // (minX, minY, maxX, maxY);
-    game.scale.forceLandscape = true;
-    game.scale.pageAlignVertically = true;
-    game.scale.onFullScreenChange.add(() => {
-      if (
-        game.scale.isFullScreen &&
-        app.stateManager.puc &&
-        app.fullscreenButton
-      ) {
-        app.fullscreenButton.alpha = 0;
-        app.fullscreenButton.alive = 0;
-      } else if (
-        !game.scale.isFullScreen &&
-        app.stateManager.puc &&
-        app.fullscreenButton
-      ) {
-        app.fullscreenButton.alpha = 1;
-        app.fullscreenButton.alive = 1;
-      }
-    });
-    game.scale.refresh();
-  } else {
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.minWidth = 500;
-    game.scale.minHeight = 300;
-    game.scale.maxWidth = 500;
-    game.scale.maxHeight = 300;
-    game.scale.forceLandscape = true;
-    game.scale.pageAlignHorizontally = true;
-    game.scale.updateLayout(true);
-    if (window.orientation === 0) {
-      jQuery("#changedeviceorientation").css("display:block");
-    }
-    jQuery(window).on("orientationchange", () => {
-      if (window.orientation === 0) {
-        jQuery("#changedeviceorientation").css("display:block");
-      } else {
-        jQuery("#changedeviceorientation").css("display:none");
-      }
-    });
-  }
+  document.getElementById("container").appendChild(game.canvas);
 };
 
-boot.preload = () => {
-  stateAssetHandler.preload({
-    state: "boot",
-    spritesheets: ["bootimg", "loadanimation"]
-  });
-  game.load.bitmapFont(
+boot.preload = function preload() {
+  this.load.bitmapFont(
     "msxbit",
     "assets/fonts/msxbit/font.png",
     "assets/fonts/msxbit/font.fnt"
   );
+  this.load.bitmapFont(
+    "munrobit",
+    "assets/fonts/munrobit/font.png",
+    "assets/fonts/munrobit/font.fnt"
+  );
+  this.load.bitmapFont(
+    "fauxsnatch",
+    "assets/fonts/fauxsnatch/font.png",
+    "assets/fonts/fauxsnatch/font.fnt"
+  );
 };
 
 boot.create = () => {
-  const state = configHelpers.getURLParameter("state");
+  const state = configHelpers.getURLParameter("room") || "titlescreen";
+  const items = configHelpers.getURLParameter("items");
   jQuery(".hideOnStart").css("display", "none");
-  if (
-    configHelpers.getURLParameter("state") &&
-    (app.stateManager.getStateConfig(state) || stateConfigs.get(state))
-  ) {
+  if (state && app.stateManager.getStateConfig(state)) {
     app.config.devStart = true;
     app.config.devStartState = state;
   }
 
-  if (app.config.devStart || app.config.camera_mode) {
-    game.state.start("loadState", true, false, state);
+  if (items) {
+    const itemArray = items.split(",");
+    for (const i of itemArray) {
+      inventorySvc.gainPossession(i);
+    }
+  }
+
+  function run() {
+    if (app.config.devStart || app.config.camera_mode) {
+      game.scene.start("loadState", state);
+    } else {
+      game.scene.start("loadState", "placeholder");
+    }
+  }
+
+  if (app.config.startPrompt && document.cookie.indexOf("visited") === -1) {
+    jQuery("canvas").one("click", () => {
+      document.cookie = "visited";
+      jQuery("#startPrompt").css("display", "none");
+      run();
+    });
+    jQuery("body").append(
+      `
+      <div id='startPrompt'
+           style='position:absolute;top:300px; text-align: center;
+                  width: 100%;font-size: 40px;font-family:munroregular;'>
+        Click anywhere to run in your browser.
+      </div>
+      `
+    );
   } else {
-    game.state.start("loadState", true, false, "placeholder");
+    run();
   }
 };
 
